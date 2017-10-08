@@ -20,7 +20,7 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || 
 		navigator.mediaDevices
 		 .getUserMedia({
 		 	video: true, 
-		 	facingMode: "environment"
+		 	facingMode: { exact: 'environment'}
 		 })
 		.then(function(stream) {
 			console.log('hooray');
