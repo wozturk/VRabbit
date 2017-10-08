@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- this script need to be included before the a-scene tag -->
+		<link rel="stylesheet" href="./dist/app.bundle.css">
+		<script src="./dist/app.bundle.js"></script>
+		<script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+		<script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@3.x.x/dist/aframe-layout-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.x.x/dist/aframe-event-set-component.min.js"></script>
+  <script src="./dist/components.bundle.js"></script>
+		<meta charset="UTF-8">
+		<title>VRabbit</title>
+	</head>
+	<body>
+		<!-- our scene will contain entities -->
+			<a-scene id="scene">
+				<a-assets>
+					<audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+
+						<!-- set-scene="on: click; target: #scene; src:${switch}" -->
+
+					<!-- Create reusable link -->
+					<script  id="switch" type="text/html">
+						<a-entity class="switch"
+						geometry="primitive: ${shape}; height: 1; width: 1;"
+						material="color: blue"
+						sound="on:click; src: #click-sound"
+						set-scene="on: click; target: #scene; src:${switch}"
+						>
+						</a-entity>
+					</script>
+
+				</a-assets>
+
+<a-entity id="links" layout="layout: pyramid; margin: 3" position="2 2 4">
+<!-- 			<a-entity template="src: #switch" data-switch="forest" data-shape="box"></a-entity>
+			<a-entity template="src: #switch" data-switch="volcano" data-shape="sphere"></a-entity>
+			<a-entity template="src: #switch" data-switch="japan" data-shape="plane"></a-entity>
+			<a-entity template="src: #switch" data-switch="dream" data-shape="cylinder"></a-entity> -->
+</a-entity>
+				<a-text value="{W}OZTURK" color="#BBB"
+        position="-5 0.2 -3" scale="1.5 1.5 1.5"></a-text>
+				<a-box color="red" position="0 2 -5" rotation="0 45 45" scale="2 2 2"  set-scene="on: click; target: #scene; src:forest">
+					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
+					<a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
+					<a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
+				</a-box>
+				<a-sphere color="blue" position="5 4 1" scale="1 1 1">
+					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
+					<a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
+				</a-sphere>
+
+			<!-- cursor -->
+			  <a-camera>
+			    <a-cursor id="cursor">
+			      <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
+			      <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
+			    </a-cursor>
+			  </a-camera>
+				<!-- this is our background, cool, but can we use the camera? that would be sweet -->
+			</a-scene>
+
+
+	<video id="camera-bg"></video>
+
+	</body>
+</html>

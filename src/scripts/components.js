@@ -1,0 +1,1 @@
+import './components/set_scene.js';
