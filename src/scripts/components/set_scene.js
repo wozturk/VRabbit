@@ -13,8 +13,10 @@ AFRAME.registerComponent('set-scene', {
 		    el.addEventListener(data.on, function () {
 		        data.target.setAttribute('environment', 'preset', data.src);
 		        let video =  document.querySelector('#camera-bg');
-				 		video.srcObject.getTracks().forEach(track => track.stop());
-						video.srcObject = null;
+		        if (video.srcObject) {
+					 		video.srcObject.getTracks().forEach(track => track.stop());
+							video.srcObject = null;	        	
+		        }
 		    });
 	}
 });

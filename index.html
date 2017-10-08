@@ -24,9 +24,9 @@
 					<script  id="switch" type="text/html">
 						<a-entity class="switch"
 						geometry="primitive: ${shape}; height: 1; width: 1;"
-						material="color: blue"
+						material="color: ${color}"
 						sound="on:click; src: #click-sound"
-						set-scene="on: click; target: #scene; src:${switch}"
+						set-scene="on: click; target: #scene; src:${scene}"
 						>
 						</a-entity>
 					</script>
@@ -34,19 +34,19 @@
 				</a-assets>
 
 <a-entity id="links" layout="layout: pyramid; margin: 3" position="2 2 4">
-<!-- 			<a-entity template="src: #switch" data-switch="forest" data-shape="box"></a-entity>
-			<a-entity template="src: #switch" data-switch="volcano" data-shape="sphere"></a-entity>
-			<a-entity template="src: #switch" data-switch="japan" data-shape="plane"></a-entity>
-			<a-entity template="src: #switch" data-switch="dream" data-shape="cylinder"></a-entity> -->
+			<a-entity template="src: #switch" data-color="pink" data-scene="forest" data-shape="box"></a-entity>
+			<a-entity template="src: #switch" data-color="blue" data-scene="volcano" data-shape="sphere"></a-entity>
+			<a-entity template="src: #switch" data-color="green" data-scene="japan" data-shape="plane"></a-entity>
+			<a-entity template="src: #switch" data-color="yellow" data-scene="dream" data-shape="cylinder"></a-entity>
 </a-entity>
 				<a-text value="{W}OZTURK" color="#BBB"
         position="-5 0.2 -3" scale="1.5 1.5 1.5"></a-text>
-				<a-box color="red" position="0 2 -5" rotation="0 45 45" scale="2 2 2"  set-scene="on: click; target: #scene; src:forest">
+				<a-box color="red" position="0 2 -5" rotation="0 45 45" scale="2 2 2">
 					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
 					<a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
 					<a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
 				</a-box>
-				<a-sphere color="blue" position="5 4 1" scale="1 1 1">
+				<a-sphere color="blue" position="-20 4 -3" scale="1 1 1" set-scene="on: click; target: #scene; src:forest">
 					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
 					<a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
 				</a-sphere>

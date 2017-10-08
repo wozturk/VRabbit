@@ -28,7 +28,7 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || 
 				video.srcObject = stream;
 				video.onloadedmetadata = e => {
 		    video.play();
-  };
+		  };
 		})
 		.catch(function(error) {
 		});
