@@ -34,4 +34,4 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || 
 		});
 	}
 
-//startCamera();
+startCamera();
