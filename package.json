@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm live-server",
     "build": "webpack -p",
-    "start": "webpack-dev-server --open --https --cert ./cert.pem --key ./key.pem",
+    "start": "webpack-dev-server --open",
     "watch": "webpack --watch"
   },
   "author": "Wieteke Ozturk-Pots",
@@ -26,6 +26,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^2.7.1",
+    "webrtc-adapter": "^5.0.4"
   }
 }

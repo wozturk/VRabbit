@@ -1,4 +1,5 @@
 import 'aframe';
+import '../../node_modules/webrtc-adapter/out/adapter.js';
 
 //file imports to squeeze through the juicer
 
@@ -14,14 +15,15 @@ const startCamera = () => {
 navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia ||  navigator.webkitGetUserMedia || navigator.msGetUserMedia;
     if (!navigator.getUserMedia) {
       return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-
     }
 
 		navigator.mediaDevices
 		 .getUserMedia({
-		 	video: true, 
-		 	facingMode: { exact: 'environment'}
-		 })
+		 	video: {
+		 		facingMode: {
+		 			exact: 'environment'}
+		 		}
+		 	})
 		.then(function(stream) {
 			console.log('hooray');
 				const video =  document.querySelector('#camera-bg');
