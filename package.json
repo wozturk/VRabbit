@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm live-server",
     "build": "webpack -p",
-    "start": "webpack-dev-server --open --https --cert ./cert.pem --key ./key.pem",
+    "start": "webpack-dev-server --open",
     "watch": "webpack --watch"
   },
   "author": "Wieteke Ozturk-Pots",
