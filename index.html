@@ -14,10 +14,16 @@
 	</head>
 	<body>
 		<!-- our scene will contain entities -->
-			<a-scene id="scene">
+			<a-scene id="scene" environment="preset: default">
 				<a-assets>
 					<audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
-
+					<audio id="giggle2-sound" crossorigin="anonymous" src="./dist/sound/giggletwo.mp3"></audio>
+					<audio id="giggle-sound" crossorigin="anonymous" src="./dist/sound/giggle.mp3"></audio>
+				 	<a-asset-item id="bunny-model" src="./dist/models/bunny/scene.gltf">
+					<a-asset-item id="rocket-model" src="./dist/models/rocket/scene.gltf">
+					<a-asset-item id="cube-model" src="./dist/models/cube/scene.gltf">
+					<a-asset-item id="bunnycube-model" src="./dist/models/bunny-square/scene.gltf">
+					<a-asset-item id="pepsi-model" src="./dist/models/pepsi/scene.gltf">
 						<!-- set-scene="on: click; target: #scene; src:${switch}" -->
 
 					<!-- Create reusable link -->
@@ -33,15 +39,15 @@
 
 				</a-assets>
 
-<a-entity id="links" layout="layout: pyramid; margin: 3" position="2 2 4">
-			<a-entity template="src: #switch" data-color="pink" data-scene="forest" data-shape="box"></a-entity>
-			<a-entity template="src: #switch" data-color="blue" data-scene="volcano" data-shape="sphere"></a-entity>
-			<a-entity template="src: #switch" data-color="green" data-scene="japan" data-shape="plane"></a-entity>
-			<a-entity template="src: #switch" data-color="yellow" data-scene="dream" data-shape="cylinder"></a-entity>
-</a-entity>
+				<a-entity id="links" layout="layout: pyramid; margin: 3" position="2 2 4">
+							<a-entity template="src: #switch" data-color="pink" data-scene="forest" data-shape="box"></a-entity>
+							<a-entity template="src: #switch" data-color="blue" data-scene="volcano" data-shape="sphere"></a-entity>
+							<a-entity template="src: #switch" data-color="green" data-scene="japan" data-shape="plane"></a-entity>
+							<a-entity template="src: #switch" data-color="yellow" data-scene="dream" data-shape="cylinder"></a-entity>
+				</a-entity>
 				<a-text value="{W}OZTURK" color="#BBB"
         position="-5 0.2 -3" scale="1.5 1.5 1.5"></a-text>
-				<a-box color="red" position="0 2 -5" rotation="0 45 45" scale="2 2 2">
+				<a-box color="red" position="-15 2 -5" rotation="0 45 45" scale="2 2 2">
 					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
 					<a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
 					<a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
@@ -50,7 +56,10 @@
 					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
 					<a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
 				</a-sphere>
-
+				<a-gltf-model src="#cube-model" position="0 2 -5" rotation="0 45 45" scale="0.01 0.01 0.01">
+					
+				</a-gltf-model>
+					<a-gltf-model src="#bunny-model" position="0 2 -5" scale="0.01 0.01 0.01"></a-gltf-model>
 			<!-- cursor -->
 			  <a-camera>
 			    <a-cursor id="cursor">
