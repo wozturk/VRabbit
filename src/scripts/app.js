@@ -19,9 +19,11 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || 
 
 		navigator.mediaDevices
 		 .getUserMedia({
-		 	video: true, 
-		 	facingMode: { exact: 'environment'}
-		 })
+		 	video: {
+		 		facingMode: {
+		 			exact: 'environment'}
+		 		}
+		 	})
 		.then(function(stream) {
 			console.log('hooray');
 				const video =  document.querySelector('#camera-bg');
