@@ -7,7 +7,8 @@
 		<script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
 		<script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>
     <script src="https://unpkg.com/aframe-layout-component@3.x.x/dist/aframe-layout-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@3.x.x/dist/aframe-event-set-component.min.js"></script>
+		<script src="https://unpkg.com/aframe-particle-system@1.0.x/dist/aframe-particle-system-component.min.js"></script> 
+
   <script src="./dist/components.bundle.js"></script>
 		<meta charset="UTF-8">
 		<title>VRabbit</title>
@@ -15,23 +16,27 @@
 	<body>
 		<!-- our scene will contain entities -->
 			<a-scene id="scene" environment="preset: default" stats>
+				<a-entity position="0 2.25 -15" particle-system="preset: snow; color: #00ff00"></a-entity>
+
 				<a-assets>
 					<audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
 					<audio id="giggle2-sound" crossorigin="anonymous" src="./dist/sound/giggletwo.mp3"></audio>
 					<audio id="giggle-sound" crossorigin="anonymous" src="./dist/sound/giggle.mp3"></audio>
 					<img id="earth-texture" src="./dist/textures/Earth_Diffuse.jpg">
-				 	<a-asset-item id="bunny-model" src="./dist/models/bunny/scene.gltf">
+					<a-asset-item id="unicorn-model" src="./dist/models/unicorn/scene.gltf">
+					<a-asset-item id="unicorn-obj" src="./dist/models/unicorn/unicorn_final_export.obj">
+					<a-asset-item id="unicorn-mtl" src="./dist/models/unicorn/unicorn_final_export.mtl">
+				 	<a-asset-item id="bunnybal-model" src="./dist/models/crosh/scene.gltf">
 					<a-asset-item id="rocket-model" src="./dist/models/rocket/scene.gltf">
 					<a-asset-item id="cube-model" src="./dist/models/cube/scene.gltf">
-					<a-asset-item id="bunnycube-model" src="./dist/models/bunny-square/scene.gltf">
-					<a-asset-item id="pepsi-model" src="./dist/models/pepsi/scene.gltf">
+
 						<!-- set-scene="on: click; target: #scene; src:${switch}" -->
 
 					<!-- Create reusable link -->
 					<script  id="switch" type="text/html">
 						<a-entity class="switch"
 						geometry="primitive: ${shape}; height: 1; width: 1;"
-						material="color: hot-pink"
+						material="color: hotpink"
 						sound="on:click; src: #click-sound"
 						set-scene="on: click; target: #scene; src:${scene}"
 						>
@@ -40,34 +45,52 @@
 
 				</a-assets>
 
-				<a-entity id="links" layout="layout: pyramid; margin: 3" position="2 2 4">
+
+				<a-entity id="links" layout="layout: line; margin: 3" position="7 3 4" rotation="0 90 0">
 							<a-entity template="src: #switch" data-scene="forest" data-shape="box"></a-entity>
 							<a-entity template="src: #switch" data-scene="volcano" data-shape="sphere"></a-entity>
 							<a-entity template="src: #switch" data-scene="japan" data-shape="plane"></a-entity>
 							<a-entity template="src: #switch" data-scene="dream" data-shape="cylinder"></a-entity>
+							<a-entity template="src: #switch" data-scene="egypt" data-shape="tetrahedron"></a-entity>
+							<a-entity template="src: #switch" data-scene="checkerboard" data-shape="octahedron"></a-entity>
+							<a-entity template="src: #switch" data-scene="japan" data-shape="plane"></a-entity>
+							<a-entity template="src: #switch" data-scene="starry" data-shape="triangle"></a-entity>
+							<a-entity template="src: #switch" data-scene="osiris" data-shape="ring"></a-entity>
+							<a-entity template="src: #switch" data-scene="poison" data-shape="torus"></a-entity>
+							<a-entity template="src: #switch" data-scene="contact" data-shape="dodecahedron"></a-entity>
+							<a-entity template="src: #switch" data-scene="goldmine" data-shape="icosahedron"></a-entity>
 				</a-entity>
-				<a-text value="{W}OZTURK" color="#BBB" position="-5 0.2 -3" scale="1.5 1.5 1.5"></a-text>
-				<a-box color="red" position="-15 2 -5" rotation="0 45 45" >
+
+
+
+				<a-text value="{W}OZTURK" color="#BBB" position="-5 0.2 -3" scale="1.5 1.5 1.5"  set-scene="on: click; target: #scene; src: tron"></a-text>
+				<a-box color="red" position="-15 2 -5" rotation="0 45 45" set-scene="on: click; target: #scene; src: goaland">
 					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2 2 2"></a-animation>
 					<a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
 					<a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
 				</a-box>
-				<a-sphere src="#earth-texture" position="0 5 -20" rotation="0 -45 45" start-camera="on: click">
+				<a-sphere src="#earth-texture" position="0 8 -20" rotation="0 -45 45" start-camera="on: click">
 					<a-animation attribute="rotation" to="0 360 0"  dur="20000" easing="ease" repeat="indefinite"></a-animation>
 					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2 2 2"></a-animation>
 					<a-animation attribute="rotation"  begin="click" to="0 360 0"  dur="5000" ></a-animation>
 					<a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
 				</a-sphere>
-				<a-gltf-model src="#cube-model" position="-20 4 -3" rotation="0 45 45" scale="0.01 0.01 0.01">
-					<a-animation attribute="position" to="-20 4.4 -3" direction="alternate" dur="2000" repeat="indefinite"></a-animation>
-				</a-gltf-model>
+				<a-gltf-model src="#cube-model" position="-13 4 2" rotation="0 45 45" scale="0.01 0.01 0.01">
 
+					<a-animation attribute="position" to="-13 4.4 2" direction="alternate" dur="2000" repeat="indefinite"></a-animation>
+				</a-gltf-model>
+				<a-gltf-model class="object-interaction" src="#bunnybal-model" position="-2 2 -5" rotation="0 20 0" scale="0.005 0.005 0.005">
+				
+				</a-gltf-model>
+				<a-sphere position="-2 1.5 -5.1" scale="0.5 0.5 0.5" sound="on:click; src: #giggle-sound"></a-sphere>
+				<a-gltf-model src="#unicorn-model" position="0 0 5" rotation="0 220 0" scale="0.1 0.1 0.1"></a-gltf-model>
+				<a-sphere position="0 1.2 5" scale="0.3 0.3 0.3" sound="on:click; src: #giggle2-sound"></a-sphere>
+				<a-obj-model class="object-interaction" position="0 0 -5" scale="0.1 0.1 0.1" src="#unicorn-obj" mtl="#unicorn-mtl" sound="on:click; src: #giggle2-sound"></a-obj-model>
 			<!-- cursor -->
 			  <a-camera>
-			    <a-cursor id="cursor" scale="2 2 2">
-
-			      <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="2 2 2" dur="150"></a-animation>
-			      <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" from="2 2 2" to="0.1 0.1 0.1" dur="1500"></a-animation>
+			    <a-cursor id="cursor" scale="1.5 1.5 1.5" collider-check>
+			      <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="1.5 1.5 1.5" dur="150"></a-animation>
+			      <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" from="1.5 1.5 1.5" to="0.1 0.1 0.1" dur="1500"></a-animation>
 			    </a-cursor>
 			  </a-camera>
 				<!-- this is our background, cool, but can we use the camera? that would be sweet -->
