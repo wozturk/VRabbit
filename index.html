@@ -62,7 +62,7 @@
 
 
 
-				<a-text value="{W}OZTURK" color="#BBB" position="-5 0.2 -3" scale="1.5 1.5 1.5"  set-scene="on: click; target: #scene; src: tron"></a-text>
+				<a-text value="{W}OZTURK" color="#BBB" position="-5 0.2 -3" scale="1.5 1.5 1.5"></a-text>
 				<a-box color="red" position="-15 2 -5" rotation="0 45 45" set-scene="on: click; target: #scene; src: goaland">
 					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2 2 2"></a-animation>
 					<a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
@@ -74,6 +74,7 @@
 					<a-animation attribute="rotation"  begin="click" to="0 360 0"  dur="5000" ></a-animation>
 					<a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
 				</a-sphere>
+				<a-text value="Starts your camera" color="#FFF" position="-2 10 -20" scale="2 2 2"></a-text>
 				<a-gltf-model src="#cube-model" position="-13 4 2" rotation="0 45 45" scale="0.01 0.01 0.01">
 
 					<a-animation attribute="position" to="-13 4.4 2" direction="alternate" dur="2000" repeat="indefinite"></a-animation>
