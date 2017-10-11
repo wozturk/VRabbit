@@ -14,11 +14,12 @@
 	</head>
 	<body>
 		<!-- our scene will contain entities -->
-			<a-scene id="scene" environment="preset: default">
+			<a-scene id="scene" environment="preset: default" stats>
 				<a-assets>
 					<audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
 					<audio id="giggle2-sound" crossorigin="anonymous" src="./dist/sound/giggletwo.mp3"></audio>
 					<audio id="giggle-sound" crossorigin="anonymous" src="./dist/sound/giggle.mp3"></audio>
+					<img id="earth-texture" src="./dist/textures/Earth_Diffuse.jpg">
 				 	<a-asset-item id="bunny-model" src="./dist/models/bunny/scene.gltf">
 					<a-asset-item id="rocket-model" src="./dist/models/rocket/scene.gltf">
 					<a-asset-item id="cube-model" src="./dist/models/cube/scene.gltf">
@@ -30,7 +31,7 @@
 					<script  id="switch" type="text/html">
 						<a-entity class="switch"
 						geometry="primitive: ${shape}; height: 1; width: 1;"
-						material="color: ${color}"
+						material="color: hot-pink"
 						sound="on:click; src: #click-sound"
 						set-scene="on: click; target: #scene; src:${scene}"
 						>
@@ -40,31 +41,33 @@
 				</a-assets>
 
 				<a-entity id="links" layout="layout: pyramid; margin: 3" position="2 2 4">
-							<a-entity template="src: #switch" data-color="pink" data-scene="forest" data-shape="box"></a-entity>
-							<a-entity template="src: #switch" data-color="blue" data-scene="volcano" data-shape="sphere"></a-entity>
-							<a-entity template="src: #switch" data-color="green" data-scene="japan" data-shape="plane"></a-entity>
-							<a-entity template="src: #switch" data-color="yellow" data-scene="dream" data-shape="cylinder"></a-entity>
+							<a-entity template="src: #switch" data-scene="forest" data-shape="box"></a-entity>
+							<a-entity template="src: #switch" data-scene="volcano" data-shape="sphere"></a-entity>
+							<a-entity template="src: #switch" data-scene="japan" data-shape="plane"></a-entity>
+							<a-entity template="src: #switch" data-scene="dream" data-shape="cylinder"></a-entity>
 				</a-entity>
-				<a-text value="{W}OZTURK" color="#BBB"
-        position="-5 0.2 -3" scale="1.5 1.5 1.5"></a-text>
-				<a-box color="red" position="-15 2 -5" rotation="0 45 45" scale="2 2 2">
-					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
-					<a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
+				<a-text value="{W}OZTURK" color="#BBB" position="-5 0.2 -3" scale="1.5 1.5 1.5"></a-text>
+				<a-box color="red" position="-15 2 -5" rotation="0 45 45" >
+					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2 2 2"></a-animation>
+					<a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
 					<a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
 				</a-box>
-				<a-sphere color="blue" position="-20 4 -3" scale="1 1 1" set-scene="on: click; target: #scene; src:forest">
-					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
-					<a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
+				<a-sphere src="#earth-texture" position="0 5 -20" rotation="0 -45 45" start-camera="on: click">
+					<a-animation attribute="rotation" to="0 360 0"  dur="20000" easing="ease" repeat="indefinite"></a-animation>
+					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2 2 2"></a-animation>
+					<a-animation attribute="rotation"  begin="click" to="0 360 0"  dur="5000" ></a-animation>
+					<a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
 				</a-sphere>
-				<a-gltf-model src="#cube-model" position="0 2 -5" rotation="0 45 45" scale="0.01 0.01 0.01">
-					
+				<a-gltf-model src="#cube-model" position="-20 4 -3" rotation="0 45 45" scale="0.01 0.01 0.01">
+					<a-animation attribute="position" to="-20 4.4 -3" direction="alternate" dur="2000" repeat="indefinite"></a-animation>
 				</a-gltf-model>
-					<a-gltf-model src="#bunny-model" position="0 2 -5" scale="0.01 0.01 0.01"></a-gltf-model>
+
 			<!-- cursor -->
 			  <a-camera>
-			    <a-cursor id="cursor">
-			      <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
-			      <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
+			    <a-cursor id="cursor" scale="2 2 2">
+
+			      <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="2 2 2" dur="150"></a-animation>
+			      <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" from="2 2 2" to="0.1 0.1 0.1" dur="1500"></a-animation>
 			    </a-cursor>
 			  </a-camera>
 				<!-- this is our background, cool, but can we use the camera? that would be sweet -->
