@@ -14,7 +14,8 @@
 	</head>
 	<body>
 
-			<a-scene id="scene" environment="preset: starry">
+			<a-scene>
+				<a-entity id="scene" environment="preset: starry"></a-entity>
 	
 				<a-assets>
 					<audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
@@ -65,7 +66,7 @@
 					<a-animation attribute="scale" begin="mouseleave" dur="300" to="1 1 1"></a-animation>
 					<a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
 				</a-box>
-				<a-sphere id="earth" src="#earth-texture" position="10 8 -20" rotation="0 -45 45" start-camera="on: click">
+				<a-sphere id="earth" src="#earth-texture" position="10 8 -20" rotation="0 -45 45" start-camera="on: click; scene: #scene">
 					<a-animation attribute="rotation" to="0 360 0"  dur="20000" easing="ease" repeat="indefinite"></a-animation>
 					<a-animation attribute="scale" begin="mouseenter" dur="300" to="2 2 2"></a-animation>
 					<a-animation attribute="rotation"  begin="click" to="0 360 0"  dur="5000" ></a-animation>
